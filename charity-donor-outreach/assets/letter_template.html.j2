@@ -1,0 +1,29 @@
+<html>
+<body style="font-family: Georgia, serif; padding: 30px; max-width: 600px; color: #222;">
+
+  <p style="text-align:right; color: #888;">{{ letter_date }}</p>
+
+  <p>{{ salutation }}</p>
+
+  <p>{{ opening }}</p>
+
+  <p>{{ campaign_paragraph }}</p>
+{% if match_line %}
+  <p>{{ match_line }}</p>
+{% endif %}
+  <p>{{ ask_sentence }} {{ ask_line }}</p>
+
+  <p>To give, visit our secure donation page:
+  <a href="{{ donation_url }}"><strong>{{ donation_url }}</strong></a>.</p>
+
+  <p>With gratitude,<br>
+  <strong>{{ signer_name }}</strong><br>
+  {{ signer_title }}, {{ organization }}</p>
+{% if regional_ps %}
+  <p>{{ regional_ps }}</p>
+{% endif %}
+{% if compliance_footer %}
+  <p style="font-size: 12px; color: #888;">{{ compliance_footer }}</p>
+{% endif %}
+</body>
+</html>

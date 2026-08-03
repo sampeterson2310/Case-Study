@@ -1,0 +1,99 @@
+# Approved letter copy: editable by fundraising staff without touching code.
+#
+# Strings are Jinja fragments; available variables are the whitelisted facts the
+# pipeline provides (organization, lifetime_total, largest_gift, last_gift_year,
+# last_gift_amount, ask_amount, match_sponsor, reengagement_gift, registered_count,
+# regional_note). Anything not listed here cannot appear in a letter.
+#
+# Editorial rule for this file: state what a campaign is FOR (its purpose), never
+# what past gifts accomplished ("has meant safer shelters", "went straight to…").
+# Accomplished-outcome claims are the organization's to make in audited
+# communications, not this template's. The project's copy-governance tests
+# additionally guard every string here against match/guarantee/tax drift.
+#
+# Second rule, specific to campaign_paragraphs: they describe the CAMPAIGN, never
+# the donor's giving pattern. Unlike `openings`, they are chosen by campaign type
+# alone, so a paragraph that says "year after year" or "your annual gift" reaches
+# one-time and lapsed donors too and asserts a habit their record contradicts.
+# Donor history is spoken only in `openings`, which are gated on it, and the
+# copy-governance tests enforce it.
+#
+# Compliance note: matching language may ONLY exist in match_line, which the
+# pipeline renders solely when match_confirmed is true in campaign config.
+
+openings:
+  active: >-
+    On behalf of all of us at {{ organization }}, thank you. Your support over the
+    years, {{ lifetime_total }} in total, is part of what keeps this work going,
+    and we never take it for granted.
+  single_gift: >-
+    On behalf of all of us at {{ organization }}, thank you for your
+    {{ last_gift_year }} gift of {{ last_gift_amount }}. Generosity like yours is
+    what makes this work possible.
+  lapsed: >-
+    It has been a while since we were last in touch, and we want you to know that
+    your past support, {{ lifetime_total }} over the years, is still remembered
+    and still matters to the animals we serve.
+
+campaign_paragraphs:
+  emergency: >-
+    Right now, our emergency response teams are caring for animals rescued from
+    crisis situations, and the need is immediate. Your gift today helps fund the
+    medical treatment, safe transport, and shelter that make these rescues possible.
+  annual: >-
+    Our annual fund is what holds the everyday work steady: shelters open,
+    veterinary teams equipped, rescue and adoption programs running the whole year
+    through. This campaign is for that ongoing need rather than for any single
+    project.
+  capital: >-
+    We are building for the animals who will need us next: expanding shelter
+    capacity and modern medical facilities designed to serve this community for
+    decades. A gift to this campaign becomes part of that permanent foundation.
+  event: >-
+    Our upcoming fundraiser brings this community together for the animals, and we
+    would love to have you with us.{% if registered_count %} {{ registered_count }}
+    supporters have already signed up.{% endif %} Every registration and every gift
+    adds to what we can do next.
+  # Gentler variant automatically used for lapsed and lapsed-major donors on an
+  # emergency campaign: urgency pressure is the wrong register for a re-engagement
+  # ask. Any campaign type may add a "<type>_lapsed" variant the same way.
+  emergency_lapsed: >-
+    Our emergency teams are working around the clock for animals affected by this
+    crisis. If you are in a position to help again, your gift would join that work
+    at a moment when it matters greatly, and if not, we are simply glad to be back
+    in touch.
+
+# Rendered ONLY when match_confirmed: true (and a sponsor is named) in config.
+match_line: >-
+  Every dollar you give will be matched by {{ match_sponsor }}, a confirmed
+  matching commitment that doubles what your gift can do.
+
+ask_sentence: >-
+  Today, I'd like to invite you to consider a gift of {{ ask_amount }}.
+
+ask_lines:
+  platinum_with_naming: >-
+    Your leadership means a great deal to us, and we would welcome a conversation
+    about a naming opportunity to recognize your place in this work.
+  platinum: >-
+    Your leadership means a great deal to us, and I would welcome the chance to
+    speak with you personally about the impact you make possible.
+  gold: >-
+    If you would like your commitment to reach even further, our team would be glad
+    to walk you through our legacy giving options.
+  silver: >-
+    If you would like to make your impact automatic, a monthly gift of any size is
+    the steadiest help we receive.
+  bronze: >-
+    If you would like to do even more, starting a peer fundraising page takes five
+    minutes and lets your friends join in.
+  lapsed_with_gift: >-
+    If you choose to give again, we would love to send you {{ reengagement_gift }}
+    as a small welcome-back thank-you.
+  lapsed: >-
+    However you choose to return, we would simply be glad to have you back.
+  lapsed_major: >-
+    More than anything, we would love to reconnect. I would welcome a personal
+    conversation whenever it suits you.
+
+regional_ps: "P.S. {{ regional_note }}"

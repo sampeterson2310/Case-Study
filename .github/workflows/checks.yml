@@ -1,0 +1,21 @@
+name: checks
+
+on: [push, pull_request]
+
+jobs:
+  tests:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+        python-version: ["3.10", "3.11", "3.12", "3.13"]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Install declared dependencies (proves requirements.txt is sufficient)
+        run: python -m pip install -r charity-donor-outreach/requirements.txt pytest
+      - name: Unit, adversarial, and byte-exact golden tests
+        run: python -m pytest tests/ -q

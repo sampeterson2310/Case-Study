@@ -1,0 +1,10 @@
+# The golden fixtures are compared byte-for-byte against a fresh pipeline run,
+# and the pipeline writes LF. Without this, a checkout with core.autocrlf=true
+# (the Windows default) rewrites the committed fixtures to CRLF and test_golden
+# fails on a clean clone for a reason that has nothing to do with the code.
+* text=auto eol=lf
+
+# The original draft's sample donor table, kept byte-for-byte as it arrived (CRLF and
+# all). Nothing compares it byte-wise and csv.reader is indifferent to the
+# terminator, so there is no reason to rewrite it just to match house style.
+tests/fixtures/sample_donors.csv -text

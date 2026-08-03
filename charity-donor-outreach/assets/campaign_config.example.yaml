@@ -1,0 +1,48 @@
+# Campaign configuration: the ONLY source of campaign facts.
+# A fact absent from this file cannot appear in any letter.
+# Copy this file, fill it in with the user, and confirm it before generating.
+
+organization: ASPCA
+
+campaign:
+  type: annual            # one of: emergency | annual | capital | event (required, no default)
+  name: 2024 Annual Fund  # optional display name
+
+# Anchors ALL recency math (lapsed status, loyalty uplift). Never the wall clock.
+campaign_year: 2024
+
+# Optional; set it for reproducible re-runs. Defaults to the generation date.
+letter_date: "August 1, 2024"
+
+# Letters are signed by real, configured staff, never an invented persona.
+# The [REPLACE] marker is a deliberate tripwire: a config still holding one is
+# refused at load, naming the field, so an unfilled signer cannot ship.
+signer:
+  name: "[REPLACE: signer full name]"
+  title: "[REPLACE: signer title]"
+
+donation_url: https://secure.aspca.org/donate
+
+# Matching-gift language is allowed ONLY when this is true AND a sponsor is named.
+match_confirmed: false
+match_sponsor: null
+
+event:
+  registered_count: null  # event campaigns only; omitted -> the statistic is simply not mentioned
+
+offers:
+  naming_opportunity: false   # Platinum letters mention naming only when true
+  reengagement_gift: null     # e.g. "an ASPCA tote bag"; null -> no premium is promised.
+                              # Non-token premiums can trigger IRS quid-pro-quo written-
+                              # disclosure duties -> route to counsel; put any required
+                              # disclosure text in compliance_footer below.
+
+# Optional region -> P.S. text. Regions without an entry get no P.S.
+regional_notes: {}
+
+# Optional state-solicitation disclosure / unsubscribe line, appended as a footer.
+compliance_footer: null
+
+limits:
+  max_rows: 500          # refuse larger files cleanly (split the file)
+  max_personalized: 25   # cap on AI-personalized Tier-A letters per run

@@ -1,0 +1,5 @@
+donor_name,tier,region,gifts,largest_gift,lifetime_total,last_gift_year,volunteer
+No Data Donor,Silver,West,,,,,No
+Bad Money Donor,Gold,East,,abc,"$5,000",2023,No
+Good Donor,Silver,West,"2022: $1,000, 2023: $1,400","$1,400","$2,400",2023,No
+Good Donor,Silver,West,"2022: $1,000, 2023: $1,400","$1,400","$2,400",2023,No

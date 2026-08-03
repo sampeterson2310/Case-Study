@@ -1,0 +1,8 @@
+donor_name,tier,region,gifts,largest_gift,lifetime_total,last_gift_year,volunteer,opt_out,do_not_contact,consent_to_contact,deceased
+Opted Out Olive,Silver,West,"2022: $1,000, 2023: $1,400","$1,400","$2,400",2023,No,Yes,No,Yes,No
+Unflagged Bill,Silver,West,"2022: $1,000, 2023: $1,400","$1,400","$2,400",2023,No,No,,Yes,No
+No Consent Nina,Silver,West,"2022: $1,000, 2023: $1,400","$1,400","$2,400",2023,No,No,No,No,No
+Deceased Dan,Silver,West,"2022: $1,000, 2023: $1,400","$1,400","$2,400",2023,No,No,No,Yes,Yes
+Clean Clara,Silver,West,"2022: $1,000, 2023: $1,400","$1,400","$2,400",2023,No,No,No,Yes,No
+Ambiguous Andy,Silver,West,"2022: $1,000, 2023: $1,400","$1,400","$2,400",2023,No,No,N/A,Yes,No
+Unrecorded Ursula,Silver,West,"2022: $1,000, 2023: $1,400","$1,400","$2,400",2023,No,No,No,,No

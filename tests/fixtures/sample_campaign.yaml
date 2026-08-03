@@ -1,0 +1,18 @@
+# Fixture config for tests and the golden run: fixed letter_date + campaign_year
+# so outputs are byte-deterministic.
+organization: ASPCA
+campaign:
+  type: annual
+  name: 2024 Annual Fund
+campaign_year: 2024
+letter_date: "August 1, 2024"
+signer:
+  name: Sam Peterson
+  title: Director of Development
+donation_url: https://secure.aspca.org/donate
+match_confirmed: false
+offers:
+  naming_opportunity: true
+limits:
+  max_rows: 500
+  max_personalized: 25
